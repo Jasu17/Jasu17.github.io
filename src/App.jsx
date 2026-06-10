@@ -5,10 +5,10 @@ import Skills from "./components/Skills"
 import Contact from "./components/Contact"
 
 export default function App() {
-  return(
+  return (
     <div className="flex min-h-screen bg-base text-text-primary font-sans">
       <Sidebar />
-      <main className="flex-1 ml-64 p-8">
+      <main className="flex-1 md:ml-64 p-8 pt-16 md:pt-8">
         <Hero />
         <Projects />
         <Skills />

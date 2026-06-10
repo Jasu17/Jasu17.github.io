@@ -13,9 +13,7 @@ export default function Projects() {
       <h2 className="font-mono text-text-secondary text-xs mb-4">
         <span className="text-accent">{'>'}</span> ls ./projects
       </h2>
-
-      <div className="grid grid-cols-1 gap-4">
-        {projects.map((project) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">        {projects.map((project) => (
           <div
             key={project.id}
             className="bg-surface border border-border rounded-lg p-5 hover:border-accent transition-colors"

@@ -6,7 +6,8 @@ export const profile = {
   location: "Colombia",
   github: "https://github.com/Jasu17",
   linkedin: "https://linkedin.com/in/javier-alejandro-s-526483321",
-  avatarPlaceholder: true,
+  avatarPlaceholder: false,
+  avatar: "/avatar.jpg",
 }
 
 export const projects = [
