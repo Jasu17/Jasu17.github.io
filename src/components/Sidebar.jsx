@@ -1,56 +1,70 @@
+import { useEffect, useState } from 'react'
+import { profile } from '../data/portfolio'
+
 const navItems = [
-  { id: 'about',    label: 'whoami' },
+  { id: 'whoami', label: 'whoami' },
   { id: 'projects', label: 'projects' },
-  { id: 'skills',   label: 'skills' },
-  { id: 'contact',  label: 'contact' },
+  { id: 'skills', label: 'skills' },
+  { id: 'contact', label: 'contact' },
 ]
 
-export default function Sidebar({ active, onNavigate }) {
+export default function Sidebar() {
+  const [active, setActive] = useState('whoami')
+
+  useEffect(() => {
+    const observers = navItems.map(({ id }) => {
+      const el = document.getElementById(id)
+      if (!el) return null
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActive(id)
+        },
+        { threshold: 0.3 }
+      )
+      observer.observe(el)
+      return observer
+    })
+
+    return () => observers.forEach((o) => o && o.disconnect())
+  }, [])
+
   return (
-    <aside style={{
-      width: '220px',
-      minHeight: '100vh',
-      backgroundColor: 'var(--color-surface)',
-      borderRight: '1px solid var(--color-border)',
-      padding: '2rem 1rem',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '0.5rem',
-      position: 'fixed',
-      top: 0,
-      left: 0,
-    }}>
-      <div style={{
-        fontFamily: 'JetBrains Mono, monospace',
-        color: 'var(--color-accent)',
-        fontSize: '0.75rem',
-        marginBottom: '1.5rem',
-        letterSpacing: '0.05em',
-      }}>
-        ~/portfolio
+    <aside className="fixed top-0 left-0 h-screen w-64 bg-surface border-r border-border flex flex-col">
+
+      {/* Header */}
+      <div className="p-6 border-b border-border">
+        <p className="font-mono text-accent text-xs mb-1">~ $</p>
+        <p className="font-mono text-text-primary text-sm font-bold">{profile.handle}</p>
+        <p className="font-sans text-text-secondary text-xs mt-1">{profile.title}</p>
       </div>
 
-      {navItems.map(item => (
-        <button
-          key={item.id}
-          onClick={() => onNavigate(item.id)}
-          style={{
-            background: active === item.id ? 'var(--color-border)' : 'transparent',
-            border: 'none',
-            borderLeft: active === item.id ? '2px solid var(--color-accent)' : '2px solid transparent',
-            color: active === item.id ? 'var(--color-text)' : 'var(--color-muted)',
-            fontFamily: 'JetBrains Mono, monospace',
-            fontSize: '0.85rem',
-            padding: '0.5rem 1rem',
-            cursor: 'pointer',
-            textAlign: 'left',
-            borderRadius: '0 4px 4px 0',
-            transition: 'all 0.15s ease',
-          }}
-        >
-          {active === item.id ? '> ' : '  '}{item.label}
-        </button>
-      ))}
+      {/* Nav */}
+      <nav className="flex-1 p-4">
+        <ul className="space-y-1">
+          {navItems.map((item) => (
+            <li key={item.id}>
+              <a
+                href={`#${item.id}`}
+                className={`flex items-center gap-2 px-3 py-2 rounded font-mono text-sm transition-colors
+                  ${active === item.id
+                    ? 'text-text-primary bg-border'
+                    : 'text-text-secondary hover:text-text-primary hover:bg-border'
+                  }`}
+              >
+                <span className={active === item.id ? 'text-accent' : 'text-border'}>›</span>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* Footer */}
+      <div className="p-4 border-t border-border">
+        <p className="font-mono text-text-secondary text-xs">{profile.location}</p>
+      </div>
+
     </aside>
   )
 }
