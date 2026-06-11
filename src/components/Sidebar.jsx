@@ -3,6 +3,8 @@ import { profile } from '../data/portfolio'
 
 const navItems = [
   { id: 'whoami', label: 'whoami' },
+  { id: 'about', label: 'about' },
+  { id: 'focus', label: 'current focus' },
   { id: 'projects', label: 'projects' },
   { id: 'skills', label: 'skills' },
   { id: 'contact', label: 'contact' },

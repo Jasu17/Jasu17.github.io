@@ -1,13 +1,22 @@
 export const profile = {
   name: "Javier Alejandro S.",
   handle: "Jasu17",
-  title: "Security tooling developer",
-  bio: "Building Linux-focused CLI tools for security auditing, log analysis, and system hardening.",
+  title: "Systems Engineering Student",
+  bio: "Interested in cybersecurity, backend development, Linux and security automation.",
   location: "Colombia",
   github: "https://github.com/Jasu17",
   linkedin: "https://linkedin.com/in/javier-alejandro-s-526483321",
   avatarPlaceholder: false,
   avatar: "/avatar.jpg",
+  currentlyBuilding: [
+    "Linux Hardening Toolkit",
+    "Web Log Security Analyzer",
+  ],
+  currentFocus: [
+  "Linux Hardening Toolkit",
+  "Spring Boot backend development",
+  "Security automation tools",
+],
 }
 
 export const projects = [

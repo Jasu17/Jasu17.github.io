@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react'
 
 const lines = [
   { prompt: 'whoami', output: profile.name },
-  { prompt: 'cat title.txt', output: profile.title },
-  { prompt: 'cat bio.txt', output: profile.bio },
-  { prompt: 'echo $LOCATION', output: profile.location },
+  { prompt: 'cat role.txt', output: profile.title },
+  { prompt: 'cat focus.txt', output: profile.bio },
+  { prompt: 'cat currently_building.txt', output: profile.currentlyBuilding },
 ]
 
 export default function Hero() {
@@ -60,7 +60,17 @@ export default function Hero() {
                   <span className="text-text-secondary">{'>'} </span>
                   {line.prompt}
                 </p>
-                <p className="text-text-primary mt-1 pl-4">{line.output}</p>
+                {Array.isArray(line.output) ? (
+                  <ul className="mt-1 pl-4 space-y-1">
+                    {line.output.map((item, j) => (
+                      <li key={j} className="text-text-primary">
+                        <span className="text-accent mr-2">-</span>{item}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-text-primary mt-1 pl-4">{line.output}</p>
+                )}
               </div>
             ))}
 
