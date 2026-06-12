@@ -4,6 +4,7 @@ import About from './components/About'
 import CurrentFocus from './components/CurrentFocus'
 import Projects from './components/Projects'
 import Skills from './components/Skills'
+import Timeline from './components/Timeline'
 import Contact from './components/Contact'
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
         <CurrentFocus />
         <Projects />
         <Skills />
+        <Timeline/>
         <Contact />
       </main>
     </div>

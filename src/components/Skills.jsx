@@ -1,5 +1,20 @@
 import { skills } from '../data/portfolio'
 
+function SkillBar({ level }) {
+  return (
+    <div className="flex gap-0.5">
+      {Array.from({ length: 10 }).map((_, i) => (
+        <span
+          key={i}
+          className={`inline-block w-3 h-2 rounded-sm ${
+            i < level ? 'bg-accent' : 'bg-border'
+          }`}
+        />
+      ))}
+    </div>
+  )
+}
+
 export default function Skills() {
   return (
     <section id="skills" className="mb-16">
@@ -8,25 +23,28 @@ export default function Skills() {
         <span className="text-accent">{'>'}</span> cat skills.json
       </h2>
 
-      <div className="bg-surface border border-border rounded-lg p-5 font-mono text-sm">
-        <p className="text-border mb-4">{'{'}</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {skills.map((group) => (
+          <div
+            key={group.category}
+            className="bg-surface border border-border rounded-lg p-5"
+          >
+            <p className="font-mono text-accent text-xs mb-4">
+              # {group.category}
+            </p>
 
-        {skills.map((group, i) => (
-          <div key={group.category} className="mb-3 pl-4">
-            <span className="text-accent">"{group.category}"</span>
-            <span className="text-text-secondary">: [</span>
-            <div className="pl-4 mt-1 flex flex-wrap gap-2">
-              {group.items.map((item, j) => (
-                <span key={item} className="text-text-primary">
-                  "{item}"{j < group.items.length - 1 ? ',' : ''}
-                </span>
+            <div className="space-y-3">
+              {group.items.map((skill) => (
+                <div key={skill.name} className="flex items-center justify-between gap-4">
+                  <span className="font-mono text-text-primary text-sm w-32 shrink-0">
+                    {skill.name}
+                  </span>
+                  <SkillBar level={skill.level} />
+                </div>
               ))}
             </div>
-            <span className="text-text-secondary">]{i < skills.length - 1 ? ',' : ''}</span>
           </div>
         ))}
-
-        <p className="text-border mt-2">{'}'}</p>
       </div>
 
     </section>
