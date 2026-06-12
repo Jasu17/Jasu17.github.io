@@ -1,11 +1,7 @@
 import { useState } from 'react'
+import { useApp } from '../context/AppContext'
+import { t } from '../data/i18n'
 import { projects } from '../data/portfolio'
-
-const statusLabel = {
-  active: 'active',
-  wip: 'in progress',
-  archived: 'archived',
-}
 
 const statusColor = {
   active: 'text-accent',
@@ -14,13 +10,15 @@ const statusColor = {
 }
 
 export default function Projects() {
+  const { language } = useApp()
+  const txt = t[language].projects
   const [selected, setSelected] = useState(null)
 
   return (
     <section id="projects" className="mb-16">
 
       <h2 className="font-mono text-text-secondary text-xs mb-4">
-        <span className="text-accent">{'>'}</span> ls ./projects
+        <span className="text-accent">{'>'}</span> {txt.command}
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -29,14 +27,13 @@ export default function Projects() {
             key={project.id}
             className="bg-surface border border-border rounded-lg p-5 hover:border-accent transition-colors flex flex-col justify-between"
           >
-            {/* Header */}
             <div>
               <div className="flex items-start justify-between mb-2">
                 <span className="font-mono text-text-primary text-sm font-bold">
                   {project.name}
                 </span>
                 <span className={`font-mono text-xs ${statusColor[project.status]}`}>
-                  ● {statusLabel[project.status]}
+                  ● {txt.status[project.status]}
                 </span>
               </div>
 
@@ -45,8 +42,8 @@ export default function Projects() {
               </p>
 
               <p className="font-sans text-text-secondary text-sm mb-4">
-                {project.description}
-              </p>
+                {language === 'es' && project.es ? project.es.description : project.description}
+                </p>
 
               <div className="flex gap-2 flex-wrap mb-4">
                 {project.tags.map((tag) => (
@@ -60,7 +57,6 @@ export default function Projects() {
               </div>
             </div>
 
-            {/* Footer */}
             <div className="flex items-center justify-between mt-2">
               <a
                 href={project.repo}
@@ -68,13 +64,13 @@ export default function Projects() {
                 rel="noopener noreferrer"
                 className="font-mono text-xs text-text-secondary hover:text-accent transition-colors"
               >
-                repo →
+                {txt.repo}
               </a>
               <button
                 onClick={() => setSelected(project)}
                 className="font-mono text-xs text-accent border border-accent px-3 py-1 rounded hover:bg-accent hover:text-base transition-colors"
               >
-                view details
+                {txt.viewDetails}
               </button>
             </div>
           </div>
@@ -91,24 +87,22 @@ export default function Projects() {
             className="bg-surface border border-border rounded-lg w-full max-w-2xl max-h-[80vh] overflow-y-auto p-6"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal header */}
             <div className="flex items-center justify-between mb-6 pb-4 border-b border-border">
               <span className="font-mono text-accent text-sm font-bold">{selected.name}</span>
               <button
                 onClick={() => setSelected(null)}
                 className="font-mono text-text-secondary text-xs hover:text-text-primary transition-colors"
               >
-                ✕ close
+                {txt.close}
               </button>
             </div>
 
-            {/* Sections */}
             {[
-              { label: 'overview', content: selected.longDescription },
-              { label: 'problem', content: selected.problem },
-              { label: 'solution', content: selected.solution },
-              { label: 'challenges', content: selected.challenges },
-              { label: 'lessons learned', content: selected.lessons },
+              { label: txt.sections.overview, content: language === 'es' && selected.es ? selected.es.longDescription : selected.longDescription },
+              { label: txt.sections.problem, content: language === 'es' && selected.es ? selected.es.problem : selected.problem },
+              { label: txt.sections.solution, content: language === 'es' && selected.es ? selected.es.solution : selected.solution },
+              { label: txt.sections.challenges, content: language === 'es' && selected.es ? selected.es.challenges : selected.challenges },
+              { label: txt.sections.lessons, content: language === 'es' && selected.es ? selected.es.lessons : selected.lessons },
             ].map(({ label, content }) => (
               <div key={label} className="mb-5">
                 <p className="font-mono text-accent text-xs mb-1">{'>'} {label}</p>
@@ -118,11 +112,10 @@ export default function Projects() {
               </div>
             ))}
 
-            {/* Features */}
             <div className="mb-5">
-              <p className="font-mono text-accent text-xs mb-1">{'>'} features</p>
+              <p className="font-mono text-accent text-xs mb-1">{'>'} {txt.sections.features}</p>
               <ul className="pl-3 space-y-1">
-                {selected.features.map((f, i) => (
+                {(language === 'es' && selected.es ? selected.es.features : selected.features).map((f, i) => (
                   <li key={i} className="font-sans text-text-primary text-sm">
                     <span className="font-mono text-accent mr-2">-</span>{f}
                   </li>
@@ -130,9 +123,8 @@ export default function Projects() {
               </ul>
             </div>
 
-            {/* Stack */}
             <div className="mb-6">
-              <p className="font-mono text-accent text-xs mb-2">{'>'} stack</p>
+              <p className="font-mono text-accent text-xs mb-2">{'>'} {txt.sections.stack}</p>
               <div className="flex gap-2 flex-wrap pl-3">
                 {selected.stack.map((s) => (
                   <span
@@ -145,7 +137,6 @@ export default function Projects() {
               </div>
             </div>
 
-            {/* Repo link */}
             <div className="pt-4 border-t border-border">
               <a
                 href={selected.repo}
@@ -153,7 +144,7 @@ export default function Projects() {
                 rel="noopener noreferrer"
                 className="font-mono text-sm text-accent hover:underline"
               >
-                → view repository on GitHub
+                {txt.sections.repo}
               </a>
             </div>
           </div>

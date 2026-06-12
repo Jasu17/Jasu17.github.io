@@ -1,37 +1,37 @@
 import { useEffect, useState } from 'react'
+import { useApp } from '../context/AppContext'
 import { profile } from '../data/portfolio'
-
-const navItems = [
-  { id: 'whoami', label: 'whoami' },
-  { id: 'about', label: 'about' },
-  { id: 'focus', label: 'current focus' },
-  { id: 'projects', label: 'projects' },
-  { id: 'skills', label: 'skills' },
-  { id: 'timeline', label: 'timeline' },
-  { id: 'contact', label: 'contact' },
-]
+import { t } from '../data/i18n'
 
 export default function Sidebar() {
+  const { theme, language, toggleTheme, toggleLanguage } = useApp()
   const [active, setActive] = useState('whoami')
   const [open, setOpen] = useState(false)
+
+  const nav = t[language].nav
+  const navItems = [
+    { id: 'whoami', label: nav.whoami },
+    { id: 'about', label: nav.about },
+    { id: 'focus', label: nav.focus },
+    { id: 'projects', label: nav.projects },
+    { id: 'skills', label: nav.skills },
+    { id: 'timeline', label: nav.timeline },
+    { id: 'contact', label: nav.contact },
+  ]
 
   useEffect(() => {
     const observers = navItems.map(({ id }) => {
       const el = document.getElementById(id)
       if (!el) return null
-
       const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActive(id)
-        },
+        ([entry]) => { if (entry.isIntersecting) setActive(id) },
         { threshold: 0.3 }
       )
       observer.observe(el)
       return observer
     })
-
     return () => observers.forEach((o) => o && o.disconnect())
-  }, [])
+  }, [language])
 
   return (
     <>
@@ -43,7 +43,7 @@ export default function Sidebar() {
         {open ? '✕' : '☰'}
       </button>
 
-      {/* Overlay — solo móvil cuando está abierto */}
+      {/* Overlay */}
       {open && (
         <div
           className="md:hidden fixed inset-0 bg-base/80 z-30"
@@ -61,7 +61,27 @@ export default function Sidebar() {
 
         {/* Header */}
         <div className="p-6 border-b border-border">
-          <p className="font-mono text-accent text-xs mb-1">~ $</p>
+          <div className="flex items-center justify-between mb-1">
+            <p className="font-mono text-accent text-xs">~ $</p>
+            <div className="flex items-center gap-2">
+              {/* Tema */}
+              <button
+                onClick={toggleTheme}
+                className="font-mono text-text-secondary text-xs hover:text-accent transition-colors"
+                title="Toggle theme"
+              >
+                {theme === 'dark' ? '☀' : '☾'}
+              </button>
+              {/* Idioma */}
+              <button
+                onClick={toggleLanguage}
+                className="font-mono text-text-secondary text-xs hover:text-accent transition-colors border border-border px-1.5 py-0.5 rounded"
+                title="Toggle language"
+              >
+                {language === 'en' ? 'ES' : 'EN'}
+              </button>
+            </div>
+          </div>
           <p className="font-mono text-text-primary text-sm font-bold">{profile.handle}</p>
           <p className="font-sans text-text-secondary text-xs mt-1">{profile.title}</p>
         </div>

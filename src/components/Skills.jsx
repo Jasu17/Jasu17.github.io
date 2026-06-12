@@ -1,3 +1,5 @@
+import { useApp } from '../context/AppContext'
+import { t } from '../data/i18n'
 import { skills } from '../data/portfolio'
 
 function SkillBar({ level }) {
@@ -16,11 +18,14 @@ function SkillBar({ level }) {
 }
 
 export default function Skills() {
+  const { language } = useApp()
+  const txt = t[language].skills
+
   return (
     <section id="skills" className="mb-16">
 
       <h2 className="font-mono text-text-secondary text-xs mb-4">
-        <span className="text-accent">{'>'}</span> cat skills.json
+        <span className="text-accent">{'>'}</span> {txt.command}
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

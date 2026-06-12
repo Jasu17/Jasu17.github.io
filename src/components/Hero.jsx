@@ -1,15 +1,32 @@
 import { profile } from '../data/portfolio'
 import { useEffect, useState } from 'react'
+import { useApp } from '../context/AppContext'
+import { t } from '../data/i18n'
 
-const lines = [
-  { prompt: 'whoami', output: profile.name },
-  { prompt: 'cat role.txt', output: profile.title },
-  { prompt: 'cat focus.txt', output: profile.bio },
-  { prompt: 'cat currently_building.txt', output: profile.currentlyBuilding },
-]
+const content = {
+  en: [
+    { prompt: 'whoami', output: profile.name },
+    { prompt: 'cat role.txt', output: profile.title },
+    { prompt: 'cat focus.txt', output: profile.bio },
+    { prompt: 'cat currently_building.txt', output: profile.currentlyBuilding },
+  ],
+  es: [
+    { prompt: 'whoami', output: profile.name },
+    { prompt: 'cat rol.txt', output: 'Estudiante de Ingeniería de Sistemas' },
+    { prompt: 'cat enfoque.txt', output: 'Interesado en ciberseguridad, desarrollo backend, Linux y automatización de seguridad.' },
+    { prompt: 'cat construyendo_actualmente.txt', output: profile.currentlyBuilding },
+  ],
+}
 
 export default function Hero() {
+  const { language } = useApp()
   const [visibleLines, setVisibleLines] = useState(0)
+
+  const lines = content[language]
+
+  useEffect(() => {
+    setVisibleLines(0)
+  }, [language])
 
   useEffect(() => {
     if (visibleLines >= lines.length) return
@@ -17,7 +34,7 @@ export default function Hero() {
       setVisibleLines((v) => v + 1)
     }, 600)
     return () => clearTimeout(timer)
-  }, [visibleLines])
+  }, [visibleLines, lines])
 
   return (
     <section id="whoami" className="mb-16">

@@ -1,16 +1,21 @@
+import { useApp } from '../context/AppContext'
+import { t } from '../data/i18n'
 import { profile } from '../data/portfolio'
 
 export default function CurrentFocus() {
+  const { language } = useApp()
+  const txt = t[language].focus
+
   return (
     <section id="focus" className="mb-16">
 
       <h2 className="font-mono text-text-secondary text-xs mb-4">
-        <span className="text-accent">{'>'}</span> cat current_focus.txt
+        <span className="text-accent">{'>'}</span> {txt.command}
       </h2>
 
       <div className="bg-surface border border-border rounded-lg p-5 font-mono text-sm">
         <p className="text-text-secondary text-xs mb-4">
-          # what i'm working on right now
+          {txt.comment}
         </p>
 
         <ul className="space-y-2">

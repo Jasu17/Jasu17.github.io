@@ -1,23 +1,20 @@
-import { profile } from '../data/portfolio'
-
-const lines = [
-  "Systems Engineering student with a focus on cybersecurity and backend development.",
-  "Regular Linux user — most of my tools are built for and tested on Linux environments.",
-  "I gravitate toward CLI tooling, security automation, and understanding how systems work at a low level.",
-  "Currently building practical projects that solve real security and analysis problems.",
-]
+import { useApp } from '../context/AppContext'
+import { t } from '../data/i18n'
 
 export default function About() {
+  const { language } = useApp()
+  const txt = t[language].about
+
   return (
     <section id="about" className="mb-16">
 
       <h2 className="font-mono text-text-secondary text-xs mb-4">
-        <span className="text-accent">{'>'}</span> cat about.txt
+        <span className="text-accent">{'>'}</span> {txt.command}
       </h2>
 
       <div className="bg-surface border border-border rounded-lg p-5">
         <div className="space-y-3">
-          {lines.map((line, i) => (
+          {txt.lines.map((line, i) => (
             <p key={i} className="font-sans text-text-primary text-sm leading-relaxed">
               <span className="font-mono text-accent mr-2">//</span>
               {line}

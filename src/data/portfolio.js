@@ -41,6 +41,21 @@ export const projects = [
     repo: "https://github.com/tu-usuario/log-analyzer",
     challenges: "Balancing detection coverage with false positive rate required iterative tuning of pattern matching rules.",
     lessons: "Learned how attackers craft malicious requests and how to structure detection logic for extensibility.",
+    es: {
+      description: "Herramienta de análisis de logs de servidores web con detección de patrones de ataque, puntuación de riesgo y exportación JSON.",
+      longDescription: "Analiza logs de acceso de Apache y Nginx para detectar patrones de ataque comunes como inyección SQL, XSS y path traversal. Asigna una puntuación de riesgo por solicitud y genera reportes JSON estructurados.",
+      problem: "La revisión manual de logs es lenta y propensa a errores. Los equipos de seguridad necesitan herramientas automatizadas para identificar actividad sospechosa rápidamente.",
+      solution: "Una herramienta CLI que procesa archivos de log, aplica coincidencia de patrones contra un conjunto de reglas, puntúa cada solicitud por nivel de riesgo y genera un reporte JSON.",
+      features: [
+        "Análisis de logs de Apache y Nginx",
+        "Detección de patrones de ataque (SQLi, XSS, path traversal)",
+        "Puntuación de riesgo por solicitud",
+        "Exportación de reportes JSON",
+        "Reglas de detección configurables",
+      ],
+      challenges: "Balancear la cobertura de detección con la tasa de falsos positivos requirió ajuste iterativo de las reglas.",
+      lessons: "Aprendí cómo los atacantes construyen solicitudes maliciosas y cómo estructurar la lógica de detección para extensibilidad.",
+    },
   },
   {
     id: "config-auditor",
@@ -63,6 +78,21 @@ export const projects = [
     repo: "https://github.com/tu-usuario/config-auditor",
     challenges: "Ensuring consistent behavior across different Linux distributions required careful handling of system-specific paths and commands.",
     lessons: "Deepened understanding of Linux security baselines and how to write portable, modular Bash scripts.",
+    es: {
+      description: "Herramienta modular de auditoría de seguridad Linux con puntuación 0–100 e integración CI/CD.",
+      longDescription: "Audita configuraciones del sistema Linux en SSH, firewall, permisos de archivos y prácticas del sistema. Produce un reporte puntuado y soporta el flag --fail-under para integración en pipelines CI/CD.",
+      problem: "Los administradores de sistemas carecen de una forma rápida y automatizada de verificar que las configuraciones Linux cumplan con las líneas base de seguridad antes del despliegue.",
+      solution: "Una herramienta de auditoría en Bash con verificaciones modulares, un sistema de puntuación 0–100 y salida legible por máquina adecuada para integración en pipelines.",
+      features: [
+        "Verificaciones modulares: SSH, firewall, permisos, prácticas del sistema",
+        "Puntuación de seguridad 0–100",
+        "Integración CI/CD mediante flag --fail-under",
+        "Salida en JSON y texto plano",
+        "Módulos de verificación extensibles",
+      ],
+      challenges: "Garantizar un comportamiento consistente en diferentes distribuciones Linux requirió manejo cuidadoso de rutas y comandos específicos del sistema.",
+      lessons: "Profundicé en las líneas base de seguridad de Linux y en cómo escribir scripts Bash modulares y portables.",
+    },
   },
   {
     id: "hardening-toolkit",
@@ -85,6 +115,21 @@ export const projects = [
     repo: "https://github.com/tu-usuario/linux-hardening-toolkit",
     challenges: "Designing rollback mechanisms that work reliably across different system states without causing unintended side effects.",
     lessons: "Gained a deeper understanding of Linux internals, sysctl parameters, and how hardening decisions impact system behavior.",
+    es: {
+      description: "Toolkit modular de hardening que cubre SSH, firewall, sysctl, servicios, usuarios y dominios de auditoría.",
+      longDescription: "Una colección de módulos Bash que aplican medidas de hardening de seguridad a un sistema Linux. Cada módulo apunta a un dominio específico y puede ejecutarse de forma independiente o como parte de un hardening completo.",
+      problem: "El hardening manual de un sistema Linux es repetitivo e inconsistente entre entornos. No existe una herramienta única que cubra todos los dominios comunes de hardening de forma modular.",
+      solution: "Un toolkit donde cada dominio de hardening es un módulo independiente, permitiendo aplicación selectiva o completa de medidas de seguridad con soporte de logging y rollback.",
+      features: [
+        "Diseño modular: SSH, firewall, sysctl, servicios, usuarios, auditoría",
+        "Ejecuciones de hardening selectivas o completas",
+        "Logging de ejecución",
+        "Soporte de rollback",
+        "Alineado con benchmarks de seguridad comunes",
+      ],
+      challenges: "Diseñar mecanismos de rollback que funcionen de manera confiable en diferentes estados del sistema sin causar efectos no deseados.",
+      lessons: "Obtuve una comprensión más profunda de los internos de Linux, parámetros sysctl y cómo las decisiones de hardening impactan el comportamiento del sistema.",
+    },
   },
 ]
 
@@ -126,26 +171,47 @@ export const skills = [
 export const timeline = [
   {
     year: "2024",
-    events: [
-      "Started Systems Engineering degree",
-      "Began learning Linux seriously",
-      "First steps in Python and Bash scripting",
-    ],
+    events: {
+      en: [
+        "Focused on Linux administration and scripting",
+        "Developed Python and Bash automation tools",
+        "Started studying cybersecurity concepts",
+      ],
+      es: [
+        "Enfoque en administración de Linux y scripting",
+        "Desarrollé herramientas de automatización en Python y Bash",
+        "Comencé a estudiar conceptos de ciberseguridad",
+      ],
+    },
   },
   {
     year: "2025",
-    events: [
-      "Built Web Log Security Analyzer",
-      "Built Config Auditor",
-      "Started learning Spring Boot and Java backend",
-    ],
+    events: {
+      en: [
+        "Built Web Log Security Analyzer",
+        "Developed Config Auditor",
+        "Expanded backend development skills with Java",
+      ],
+      es: [
+        "Construí Web Log Security Analyzer",
+        "Desarrollé Config Auditor",
+        "Expandí habilidades de desarrollo backend con Java",
+      ],
+    },
   },
   {
     year: "2026",
-    events: [
-      "Built Linux Hardening Toolkit",
-      "Started portfolio website",
-      "Exploring blockchain and distributed systems",
-    ],
+    events: {
+      en: [
+        "Built Linux Hardening Toolkit",
+        "Developed portfolio website",
+        "Created a Spring Boot management system for a coffee business",
+      ],
+      es: [
+        "Construí Linux Hardening Toolkit",
+        "Desarrollé sitio web de portafolio",
+        "Creé un sistema de gestión en Spring Boot para un negocio de café",
+      ],
+    },
   },
 ]
