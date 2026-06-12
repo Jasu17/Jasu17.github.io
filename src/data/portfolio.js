@@ -38,7 +38,7 @@ export const projects = [
     stack: ["Python", "Regex", "JSON"],
     status: "active",
     date: "2025",
-    repo: "https://github.com/tu-usuario/log-analyzer",
+    repo: "https://github.com/Jasu17/log-analyzer",
     challenges: "Balancing detection coverage with false positive rate required iterative tuning of pattern matching rules.",
     lessons: "Learned how attackers craft malicious requests and how to structure detection logic for extensibility.",
     es: {
@@ -75,7 +75,7 @@ export const projects = [
     stack: ["Bash", "Linux", "JSON"],
     status: "active",
     date: "2025",
-    repo: "https://github.com/tu-usuario/config-auditor",
+    repo: "https://github.com/Jasu17/config-auditor",
     challenges: "Ensuring consistent behavior across different Linux distributions required careful handling of system-specific paths and commands.",
     lessons: "Deepened understanding of Linux security baselines and how to write portable, modular Bash scripts.",
     es: {
@@ -112,7 +112,7 @@ export const projects = [
     stack: ["Bash", "Linux", "systemd"],
     status: "active",
     date: "2026",
-    repo: "https://github.com/tu-usuario/linux-hardening-toolkit",
+    repo: "https://github.com/Jasu17/linux-hardening-toolkit",
     challenges: "Designing rollback mechanisms that work reliably across different system states without causing unintended side effects.",
     lessons: "Gained a deeper understanding of Linux internals, sysctl parameters, and how hardening decisions impact system behavior.",
     es: {
