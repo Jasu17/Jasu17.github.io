@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useApp } from '../context/AppContext'
 import { profile } from '../data/portfolio'
 import { t } from '../data/i18n'
+import Terminal from './Terminal'
 
 export default function Sidebar() {
   const { theme, language, toggleTheme, toggleLanguage } = useApp()
@@ -106,6 +107,9 @@ export default function Sidebar() {
               </li>
             ))}
           </ul>
+          <div className="mt-4">
+            <Terminal />
+          </div>
         </nav>
 
         {/* Footer */}
