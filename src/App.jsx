@@ -1,3 +1,4 @@
+import { Routes, Route } from 'react-router-dom'
 import Sidebar from './components/Sidebar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -6,8 +7,9 @@ import Projects from './components/Projects'
 import Skills from './components/Skills'
 import Timeline from './components/Timeline'
 import Contact from './components/Contact'
+import NotFound from './components/NotFound'
 
-export default function App() {
+function Home() {
   return (
     <div className="flex min-h-screen bg-base text-text-primary font-sans">
       <Sidebar />
@@ -17,9 +19,18 @@ export default function App() {
         <CurrentFocus />
         <Projects />
         <Skills />
-        <Timeline/>
+        <Timeline />
         <Contact />
       </main>
     </div>
+  )
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   )
 }
