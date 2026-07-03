@@ -8,6 +8,7 @@ import Skills from './components/Skills'
 import Timeline from './components/Timeline'
 import Contact from './components/Contact'
 import NotFound from './components/NotFound'
+import ScrollToTop from './components/ScrollToTop'
 
 function Home() {
   return (
@@ -22,6 +23,7 @@ function Home() {
         <Timeline />
         <Contact />
       </main>
+      <ScrollToTop />
     </div>
   )
 }
