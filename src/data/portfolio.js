@@ -240,3 +240,10 @@ export const learning = [
     status: "inactive",
   }
 ]
+
+export const cvFiles = [
+  { label: 'CV · ATS · English', file: '/cv-ats-eng.pdf', lang: 'en' },
+  { label: 'CV · ATS · Español', file: '/cv-ats-es.pdf', lang: 'es' },
+  { label: 'CV · Visual · English', file: '/cv-visual-eng.pdf', lang: 'en' },
+  { label: 'CV · Visual · Español', file: '/cv-visual-es.pdf', lang: 'es' },
+]
