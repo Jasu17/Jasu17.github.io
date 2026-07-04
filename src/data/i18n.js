@@ -7,6 +7,7 @@ export const t = {
       projects: 'projects',
       skills: 'skills',
       timeline: 'timeline',
+      certifications: 'certifications',
       contact: 'contact',
     },
     hero: {
@@ -74,6 +75,7 @@ export const t = {
       projects: 'proyectos',
       skills: 'habilidades',
       timeline: 'cronología',
+      certifications: 'certificaciones',
       contact: 'contacto',
     },
     hero: {

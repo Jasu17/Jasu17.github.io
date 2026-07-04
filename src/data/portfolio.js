@@ -215,3 +215,28 @@ export const timeline = [
     },
   },
 ]
+export const certifications = [
+  {
+    id: "thm-pre-security",
+    name: "Pre-Security Path",
+    issuer: "TryHackMe",
+    date: "2026",
+    url: "https://tryhackme.com",
+    type: "Platform",
+  },
+]
+
+export const learning = [
+  {
+    name: "TryHackMe",
+    description: "cybersecurity 101 Path",
+    url: "https://tryhackme.com",
+    status: "active",
+  },
+  {
+    name: "Hack The Box",
+    description: "Penetration testing labs",
+    url: "https://hackthebox.com",
+    status: "inactive",
+  }
+]

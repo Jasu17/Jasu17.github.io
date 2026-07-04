@@ -17,6 +17,7 @@ export default function Sidebar() {
     { id: 'projects', label: nav.projects },
     { id: 'skills', label: nav.skills },
     { id: 'timeline', label: nav.timeline },
+    { id: 'certifications', label: nav.certifications },
     { id: 'contact', label: nav.contact },
   ]
 

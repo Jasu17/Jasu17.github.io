@@ -9,6 +9,7 @@ import Timeline from './components/Timeline'
 import Contact from './components/Contact'
 import NotFound from './components/NotFound'
 import ScrollToTop from './components/ScrollToTop'
+import Certifications from './components/Certifications'
 
 function Home() {
   return (
@@ -21,6 +22,7 @@ function Home() {
         <Projects />
         <Skills />
         <Timeline />
+        <Certifications />
         <Contact />
       </main>
       <ScrollToTop />
